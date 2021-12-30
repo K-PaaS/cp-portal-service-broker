@@ -12,10 +12,10 @@ PaaS-TA에서 제공하는 Container Platform 포털 서비스 브로커로 클�
 ## 시작하기
 
 Container Platform 포털 서비스 브로커가 수행하는 서비스 관리 작업은 다음과 같습니다.
-- Catalog : Container 서비스 카탈로그 조회
-- Provisioning : Container 서비스 인스턴스 생성 ( parameters "owner", "org_name", "space_name" 필수 )
-- Updateprovisioning : Container 서비스 인스턴스 갱신
-- Deprovisioning : Container 서비스 인스턴스 삭제
+- Catalog : Container Platform 포털 서비스 카탈로그 조회
+- Provisioning : Container Platform 포털 서비스 인스턴스 생성 ( parameters "owner", "org_name", "space_name" 필수 )
+- Updateprovisioning : Container Platform 포털 서비스 인스턴스 갱신
+- Deprovisioning : Container Platform 포털 서비스 인스턴스 삭제
 
 ### Container Platform 포털 서비스 브로커 설치 방법
 
@@ -23,14 +23,14 @@ Container Platform 포털 서비스 브로커가 수행하는 서비스 관리 �
 
 ### Container Platform 포털 서비스 브로커 빌드 방법
 
-Container 서비스 브로커를 활용하여 로컬 환경에서 빌드하고 싶을 때 다음 명령어를 입력합니다.
+Container Platform 포털 서비스 브로커를 활용하여 로컬 환경에서 빌드하고 싶을 때 다음 명령어를 입력합니다.
 ```
 $ gradle build
 ```
 
 ## 개발 환경
 
-Container 서비스 브로커의 개발 환경은 다음과 같습니다.
+Container Platform 포털 서비스 브로커의 개발 환경은 다음과 같습니다.
 
 | Situation                      | Version |
 | ------------------------------ | ------- |
@@ -98,4 +98,4 @@ Container 서비스 브로커의 개발 환경은 다음과 같습니다.
       plan_id : \<plan_id_of_service\>
 
 ## 라이선스
-Container 서비스 브로커는 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)를 사용합니다.
+Container Platform 포털 서비스 브로커는 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)를 사용합니다.
