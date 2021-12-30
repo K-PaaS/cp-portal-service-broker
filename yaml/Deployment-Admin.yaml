@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service-broker-deployment
+  labels:
+    app: admin-service-broker
+  namespace: cp-dev-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-service-broker
+  template:
+    metadata:
+      labels:
+        app: admin-service-broker
+    spec:
+      containers:
+        - name: admin-service-broker
+          image: $REGISTRY_HARBOR_URL/container-platform-new-dev/container-platform-admin-service-broker:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3092
+          env:
+            - name: K8S_IP
+              value: K8S_IP                 # Master Node IP
+            - name: K8S_PORT
+              value: "6443"
+            - name: K8S_AUTH_BEARER
+              value: K8S_AUTH_BEARER
+            - name: HAPROXY_IP
+              value: HAPROXY_IP
+            - name: MARIADB_USER_ID
+              value: MARIADB_USER_ID
+            - name: MARIADB_USER_PASSWORD
+              value: MARIADB_USER_PASSWORD
+            - name: COMMON_API_ID
+              value: admin
+            - name: COMMON_API_PASSWORD
+              value: PaaS-TA
+            - name: LOGGGING_LEVEL
+              value: INFO
+            - name: REGISTRY_PORT
+              value: "5001"
+            - name: MARIADB_PORT
+              value: "13306"
+            - name: NODE_IP
+              value: NODE_IP    # Worker Node IP
+      imagePullSecrets:
+        - name: paasta-cp-dev-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service-broker-deployment
+  labels:
+    app: admin-service-broker
+  namespace: cp-dev-namespace
+spec:
+  ports:
+    - nodePort: 32704
+      port: 3092
+      protocol: TCP
+      targetPort: 3092
+  selector:
+    app: admin-service-broker
+  type: NodePort
