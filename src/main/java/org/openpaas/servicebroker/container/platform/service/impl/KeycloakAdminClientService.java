@@ -2,8 +2,8 @@ package org.openpaas.servicebroker.container.platform.service.impl;
 
 
 
+import org.apache.http.ssl.TrustStrategy;
 import org.keycloak.admin.client.Keycloak;
-import org.keycloak.admin.client.KeycloakBuilder;
 
 import org.keycloak.representations.idm.FederatedIdentityRepresentation;
 import org.keycloak.representations.idm.GroupRepresentation;
@@ -17,7 +17,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.net.ssl.SSLContext;
 import javax.ws.rs.core.Response;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,15 +67,10 @@ public class KeycloakAdminClientService {
     private static final Logger logger = LoggerFactory.getLogger(KeycloakAdminClientService.class);
 
     // build keycloak instance
-     public Keycloak getKeycloakInstance(){
-        return KeycloakBuilder.builder()
-                .grantType(grantType)
-                .username(username)
-                .password(password)
-                .serverUrl(serverUrl)
-                .realm(realm)
-                .clientId(clientId)
-                .build();
+     public Keycloak getKeycloakInstance() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+         TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+         SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
+         return Keycloak.getInstance(serverUrl, realm, username, password, clientId, sslContext);
     }
 
 
