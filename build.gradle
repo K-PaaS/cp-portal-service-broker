@@ -28,6 +28,8 @@ ext {
     jacocoVersion = '0.8.1'
 }
 
+ext['tomcat.version'] = '9.0.63'
+
 def mainClassName = 'org.openpaas.servicebroker.container.platform.config.Application'
 
 sourceCompatibility = 1.8
