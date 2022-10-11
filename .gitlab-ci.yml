@@ -1,0 +1,23 @@
+include:
+  - local: '/.gitlab-ci/.ci-values.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: 'dev'
+    file: '/.gitlab-ci/.build-gradle-template.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: 'dev'
+    file: '/.gitlab-ci/.build-image-template.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: 'dev'
+    file: '/.gitlab-ci/.deploy-configmap-template.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: 'dev'
+    file: '/.gitlab-ci/.deploy-secret-template.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: 'dev'
+    file: '/.gitlab-ci/.deploy-helm-template.yml'
+
+stages:
+  - build
+  - docker
+  - pre-deploy
+  - deploy

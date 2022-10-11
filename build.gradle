@@ -1,6 +1,7 @@
 buildscript {
     ext {
-        springBootVersion = '2.3.10.RELEASE'
+        springBootVersion = '2.7.3'
+        springBootManagementPlugin = '1.0.11.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -53,7 +54,6 @@ repositories {
 
 dependencies {
     compile files('libs/openpaas-service-java-broker.jar')
-    compile("org.mariadb.jdbc:mariadb-java-client:2.2.6")
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -70,6 +70,7 @@ dependencies {
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.5'
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.9'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
