@@ -16,10 +16,9 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-bootJar {
-    archiveBaseName = 'paas-ta-caas-broker'
-    archiveFileName = 'paas-ta-caas-broker.jar'
-    archiveVersion = '1.1.0'
+jar {
+    archivesBaseName = 'paas-ta-container-platform-broker'
+    enabled = false
 }
 
 ext {
@@ -35,18 +34,6 @@ def mainClassName = 'org.openpaas.servicebroker.container.platform.config.Applic
 
 sourceCompatibility = 1.8
 version = '1.0'
-
-jar {
-    manifest {
-        attributes  'Title': 'CaaS Broker', 'Version': version, 'Main-Class': mainClassName
-    }
-    archivesBaseName = 'paas-ta-caas-broker'
-    version = "" // omit the version from the war file name
-    dependsOn configurations.runtime
-    from {
-        configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
-    }
-}
 
 repositories {
     mavenCentral()
