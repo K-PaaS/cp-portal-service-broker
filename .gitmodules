@@ -1,0 +1,4 @@
+[submodule "container-platform-helm-chart"]
+	path = container-platform-helm-chart
+	url = ../../../container-platform/container-platform-helm-chart
+	branch = dev
