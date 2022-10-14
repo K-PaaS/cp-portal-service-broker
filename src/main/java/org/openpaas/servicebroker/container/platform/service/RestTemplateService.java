@@ -150,37 +150,12 @@ public class RestTemplateService {
     }
 
 
-    /**
-     * cp-api와 통신하기 위한 메소드
-     * 사용자 등록을 위한 요청
-     *
-     */
-    public <T> T requestCpApi(Users users, String path, HttpMethod httpMethod, Class<T> responseType) throws HttpStatusCodeException{
-
-        headers = new HttpHeaders();
-        headers.add("Accept", "application/json");
-        headers.add("Content-Type", "application/json;charset=UTF-8");
-
-        HttpEntity<Users> reqEntity = new HttpEntity<Users>(users, headers);
-
-        ResponseEntity<T> resEntity = null;
-
-        if(HttpMethod.POST.equals(httpMethod)) {
-            logger.info("## ** SEND USER SIGNUP REQUEST TO API");
-            resEntity = restTemplate.exchange(propertyService.getCpApiUrl() + path, httpMethod, reqEntity, responseType);
-        }
-
-        return resEntity.getBody();
-    }
-
-
 
     /**
-     * cp-common-api와 통신하기 위한 메소드
-     * 사용자 삭제를 위한 요청
+     * cp-common-api 요청 메소드
      *
      */
-    public <T> T requestCpCommonApi(String reqUrl, HttpMethod httpMethod, Class<T> responseType) throws HttpStatusCodeException{
+    public <T> T sendCpCommonApi(String reqUrl, HttpMethod httpMethod, Class<T> responseType) throws HttpStatusCodeException{
 
         headers = new HttpHeaders();
         headers.add("Accept", "application/json");
@@ -190,10 +165,16 @@ public class RestTemplateService {
         HttpEntity<Users> reqEntity = new HttpEntity<Users>(null, headers);
         ResponseEntity<T> resEntity = null;
 
+        try {
+            resEntity = restTemplate.exchange(propertyService.getCpCommonApiUrl() + reqUrl, httpMethod, reqEntity, responseType);
+        } catch (HttpStatusCodeException exception) {
+            logger.info("HttpStatusCodeException API Call URL : {}, errorCode : {}, errorMessage : {}", CommonUtils.loggerReplace(reqUrl), CommonUtils.loggerReplace(exception.getRawStatusCode()), CommonUtils.loggerReplace(exception.getMessage()));
+          //  throw new CommonStatusCodeException(Integer.toString(exception.getRawStatusCode()));
+          // exception 처리 해야함
+        }
 
-        if(HttpMethod.DELETE.equals(httpMethod)) {
-            logger.info("## ** SEND DELETE REQUEST TO COMMON API");
-            resEntity = restTemplate.exchange(reqUrl, httpMethod, reqEntity, responseType);
+        if (resEntity.getBody() == null) {
+            logger.error("RESPONSE-TYPE: RESPONSE BODY IS NULL");
         }
 
         return resEntity.getBody();

@@ -24,11 +24,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CatalogConfig {
-
-
-    @Value("${cp.broker.admin.id}")
-    private String SERVICEDEFINITION_ADMIN_ID;
-
     ///////////////////////////
     //// START PLAN COMMON ////
     ///////////////////////////
@@ -53,8 +48,9 @@ public class CatalogConfig {
     @Value("#{'${serviceDefinition.tags}'.split(',')}")
     private List<String> SERVICEDEFINITION_TAGS;
 
+
     ///////////////////////////
-    ////    START PLAN 1   ////
+    ////    START PLAN 1  ////
     ///////////////////////////
     @Value("${serviceDefinition.plan1.id}")
     private String SERVICEDEFINITION_PLAN1_ID;
@@ -64,88 +60,6 @@ public class CatalogConfig {
 
     @Value("${serviceDefinition.plan1.desc}")
     private String SERVICEDEFINITION_PLAN1_DESC;
-
-    @Value("${serviceDefinition.plan1.type}")
-    private String SERVICEDEFINITION_PLAN1_TYPE;
-
-    @Value("${serviceDefinition.plan1.cpu}")
-    private Integer SERVICEDEFINITION_PLAN1_CPU;
-
-    @Value("${serviceDefinition.plan1.memory}")
-    private String SERVICEDEFINITION_PLAN1_MEMORY;
-
-    @Value("${serviceDefinition.plan1.disk}")
-    private String SERVICEDEFINITION_PLAN1_DISK;
-
-    @Value("${serviceDefinition.plan1.weight}")
-    private Integer SERVICEDEFINITION_PLAN1_WEIGHT;
-
-    ///////////////////////////
-    ////    START PLAN 2   ////
-    ///////////////////////////
-    @Value("${serviceDefinition.plan2.id}")
-    private String SERVICEDEFINITION_PLAN2_ID;
-
-    @Value("${serviceDefinition.plan2.name}")
-    private String SERVICEDEFINITION_PLAN2_NAME;
-
-    @Value("${serviceDefinition.plan2.desc}")
-    private String SERVICEDEFINITION_PLAN2_DESC;
-
-    @Value("${serviceDefinition.plan2.type}")
-    private String SERVICEDEFINITION_PLAN2_TYPE;
-
-    @Value("${serviceDefinition.plan2.cpu}")
-    private Integer SERVICEDEFINITION_PLAN2_CPU;
-
-    @Value("${serviceDefinition.plan2.memory}")
-    private String SERVICEDEFINITION_PLAN2_MEMORY;
-
-    @Value("${serviceDefinition.plan2.disk}")
-    private String SERVICEDEFINITION_PLAN2_DISK;
-
-    @Value("${serviceDefinition.plan2.weight}")
-    private Integer SERVICEDEFINITION_PLAN2_WEIGHT;
-
-    ///////////////////////////
-    ////    START PLAN 3   ////
-    ///////////////////////////
-    @Value("${serviceDefinition.plan3.id}")
-    private String SERVICEDEFINITION_PLAN3_ID;
-
-    @Value("${serviceDefinition.plan3.name}")
-    private String SERVICEDEFINITION_PLAN3_NAME;
-
-    @Value("${serviceDefinition.plan3.desc}")
-    private String SERVICEDEFINITION_PLAN3_DESC;
-
-    @Value("${serviceDefinition.plan3.type}")
-    private String SERVICEDEFINITION_PLAN3_TYPE;
-
-    @Value("${serviceDefinition.plan3.cpu}")
-    private Integer SERVICEDEFINITION_PLAN3_CPU;
-
-    @Value("${serviceDefinition.plan3.memory}")
-    private String SERVICEDEFINITION_PLAN3_MEMORY;
-
-    @Value("${serviceDefinition.plan3.disk}")
-    private String SERVICEDEFINITION_PLAN3_DISK;
-
-    @Value("${serviceDefinition.plan3.weight}")
-    private Integer SERVICEDEFINITION_PLAN3_WEIGHT;
-
-
-    ///////////////////////////
-    ////    START PLAN 4   ////
-    ///////////////////////////
-    @Value("${serviceDefinition.plan4.id}")
-    private String SERVICEDEFINITION_PLAN4_ID;
-
-    @Value("${serviceDefinition.plan4.name}")
-    private String SERVICEDEFINITION_PLAN4_NAME;
-
-    @Value("${serviceDefinition.plan4.desc}")
-    private String SERVICEDEFINITION_PLAN4_DESC;
 
 
     /**
@@ -165,26 +79,6 @@ public class CatalogConfig {
         if(SERVICEDEFINITION_PLANUPDATABLE_STRING.toUpperCase().trim().equals("TRUE"))
             SERVICEDEFINITION_PLANUPDATABLE = true;
 
-
-        if(SERVICEDEFINITION_ID.equalsIgnoreCase(SERVICEDEFINITION_ADMIN_ID)) {
-            // admin broker type
-            serviceDefinition =  new ServiceDefinition(
-                    SERVICEDEFINITION_ID,
-                    SERVICEDEFINITION_NAME,
-                    SERVICEDEFINITION_DESC,
-                    SERVICEDEFINITION_BINDABLE, // bindable
-                    SERVICEDEFINITION_PLANUPDATABLE, // updatable
-                    Arrays.asList(
-                            new Plan( SERVICEDEFINITION_PLAN4_ID,
-                                    SERVICEDEFINITION_PLAN4_NAME,
-                                    SERVICEDEFINITION_PLAN4_DESC)),
-                    SERVICEDEFINITION_TAGS,
-                    getServiceDefinitionMetadata(),
-                    null,
-                    null );
-        }
-        else {
-            // user broker type
             serviceDefinition =  new ServiceDefinition(
                     SERVICEDEFINITION_ID,
                     SERVICEDEFINITION_NAME,
@@ -194,37 +88,11 @@ public class CatalogConfig {
                     Arrays.asList(
                             new Plan( SERVICEDEFINITION_PLAN1_ID,
                                     SERVICEDEFINITION_PLAN1_NAME,
-                                    SERVICEDEFINITION_PLAN1_DESC,
-                                    getPlanMetadata( SERVICEDEFINITION_PLAN1_TYPE ),
-                                    true,
-                                    SERVICEDEFINITION_PLAN1_CPU,
-                                    SERVICEDEFINITION_PLAN1_MEMORY,
-                                    SERVICEDEFINITION_PLAN1_DISK,
-                                    SERVICEDEFINITION_PLAN1_WEIGHT ),
-                            new Plan( SERVICEDEFINITION_PLAN2_ID,
-                                    SERVICEDEFINITION_PLAN2_NAME,
-                                    SERVICEDEFINITION_PLAN2_DESC,
-                                    getPlanMetadata( SERVICEDEFINITION_PLAN2_TYPE ),
-                                    true,
-                                    SERVICEDEFINITION_PLAN2_CPU,
-                                    SERVICEDEFINITION_PLAN2_MEMORY,
-                                    SERVICEDEFINITION_PLAN2_DISK,
-                                    SERVICEDEFINITION_PLAN2_WEIGHT ),
-                            new Plan( SERVICEDEFINITION_PLAN3_ID,
-                                    SERVICEDEFINITION_PLAN3_NAME,
-                                    SERVICEDEFINITION_PLAN3_DESC,
-                                    getPlanMetadata( SERVICEDEFINITION_PLAN3_TYPE ),
-                                    true,
-                                    SERVICEDEFINITION_PLAN3_CPU,
-                                    SERVICEDEFINITION_PLAN3_MEMORY,
-                                    SERVICEDEFINITION_PLAN3_DISK,
-                                    SERVICEDEFINITION_PLAN3_WEIGHT ) ),
+                                    SERVICEDEFINITION_PLAN1_DESC)),
                     SERVICEDEFINITION_TAGS,
                     getServiceDefinitionMetadata(),
                     null,
                     null );
-        }
-
 
         return new Catalog( Arrays.asList(serviceDefinition) );
 
@@ -247,18 +115,7 @@ public class CatalogConfig {
         return sdMetadata;
     }
 
-    /**
-     * Costs, bullets 정보를 포함한 Plan metadata 객체를 생성
-     * @param planType
-     * @return Map&lt;String, Object&gt;
-     */
-    private Map<String, Object> getPlanMetadata(String planType) {
-        Map<String, Object> planMetadata = new HashMap<>();
-        planMetadata.put("costs", getCosts(planType));
-        planMetadata.put("bullets", getBullets(planType));
 
-        return planMetadata;
-    }
 
     /**
      * Plan의 Costs 정보를 Map 객체의 리스트 형태로 반환
@@ -295,11 +152,13 @@ public class CatalogConfig {
         return Collections.singletonList(costsMap);
     }
 
-    /**
+
+
+ /*   *//**
      * Plan의 Bullets 정보를 담은 객체를 반환
      * @param planType
      * @return List&lt;String&gt;
-     */
+     *//*
     private List<String> getBullets(String planType) {
         if (planType.equals("A")) {
             return Arrays.asList(SERVICEDEFINITION_PLAN1_DESC);
@@ -310,5 +169,18 @@ public class CatalogConfig {
         }
 
         return Arrays.asList(SERVICEDEFINITION_PLAN1_DESC);
-    }
+    }*/
+
+    /*    *//**
+     * Costs, bullets 정보를 포함한 Plan metadata 객체를 생성
+     * @param planType
+     * @return Map&lt;String, Object&gt;
+     *//*
+    private Map<String, Object> getPlanMetadata(String planType) {
+        Map<String, Object> planMetadata = new HashMap<>();
+        planMetadata.put("costs", getCosts(planType));
+        planMetadata.put("bullets", getBullets(planType));
+
+        return planMetadata;
+    }*/
 }

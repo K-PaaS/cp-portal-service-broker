@@ -175,7 +175,7 @@ public class JpaServiceInstance extends ServiceInstance {
         return this.serviceDefinitionId;
     }
 
-    private void setServiceDefinitionId(String id) {
+    public void setServiceDefinitionId(String id) {
         this.serviceDefinitionId = id;
     }
 
@@ -193,7 +193,7 @@ public class JpaServiceInstance extends ServiceInstance {
         return this.organizationGuid;
     }
 
-    private void setOrganizationGuid(String orgGuid) {
+    public void setOrganizationGuid(String orgGuid) {
         this.organizationGuid = orgGuid;
     }
 
@@ -201,7 +201,7 @@ public class JpaServiceInstance extends ServiceInstance {
         return this.spaceGuid;
     }
 
-    private void setSpaceGuid(String spaceGuid) {
+    public void setSpaceGuid(String spaceGuid) {
         this.spaceGuid = spaceGuid;
     };
 

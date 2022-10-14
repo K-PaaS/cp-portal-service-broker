@@ -2,10 +2,8 @@ package org.openpaas.servicebroker.container.platform.service.impl;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import org.json.JSONObject;
 import org.openpaas.servicebroker.container.platform.common.CommonUtils;
 import org.openpaas.servicebroker.container.platform.exception.ContainerPlatformException;
-import org.openpaas.servicebroker.container.platform.model.Constants;
 import org.openpaas.servicebroker.container.platform.model.JpaServiceInstance;
 import org.openpaas.servicebroker.container.platform.service.PropertyService;
 import org.openpaas.servicebroker.container.platform.service.RestTemplateService;
@@ -16,10 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.client.HttpStatusCodeException;
-
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -319,72 +314,10 @@ public class ContainerPlatformService {
             logger.debug("Change ResourceQuota response body : {}", CommonUtils.loggerReplace(responseBody));
     }
 
-    /**
-     * private docker repository 의 secret 을 생성한다.
-     *
-     * @param nameSpace the space name
-     * @return String
-     */
-    public String createPrivateDockerSecret(String nameSpace) {
-        String username = propertyService.getAuthId();
-        String password = propertyService.getAuthPassword();
-        String docker_repo_uri = propertyService.getPrivateDockerUri() + ":" + propertyService.getPrivateDockerPort();
-        String secretName = propertyService.getPrivateDockerSecretName();
 
-        logger.info("docker_repo_uri::::::" + CommonUtils.loggerReplace(docker_repo_uri) + "   username:::::" + CommonUtils.loggerReplace(username) + "    password::::::" + CommonUtils.loggerReplace(password));
-
-        Map secretMap = new HashMap();
-
-        // Secret YAML 의 secret
-        String encodedSecret = Base64Utils.encodeToString((username + ":" + password).getBytes(StandardCharsets.UTF_8));
-        logger.info("AUTH ::::: " + CommonUtils.loggerReplace(encodedSecret));
-        secretMap.put("secret", encodedSecret);
-
-
-        Map auth_property = new HashMap<String,String>(){{put("username", username); put("password", password); put("auth", encodedSecret);}};
-        logger.info("auth_property ::::: " + CommonUtils.loggerReplace(auth_property.toString()));
-
-
-        Map auth_value = new HashMap<String,Map<?,?>>(){{put(docker_repo_uri, auth_property);}};
-        logger.info("auth_value ::::: " + CommonUtils.loggerReplace(auth_value.toString()));
-
-
-        Map auth_result = new HashMap<String,Map<?,?>>(){{put("auths", auth_value);}};
-        logger.info("auth_result ::::: " + CommonUtils.loggerReplace(auth_result.toString()));
-
-
-        // Docker Secret YAML
-        JSONObject jsonObject = new JSONObject(auth_result);
-        logger.info(CommonUtils.loggerReplace(jsonObject.toString()));
-        String auth_base64 = Base64Utils.encodeToString(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
-        logger.info(CommonUtils.loggerReplace(auth_base64));
-
-
-
-        Map<String, Object> model = new HashMap<>();
-        model.put("secretName", secretName);
-        model.put("spaceName", nameSpace);
-        model.put("configJson", auth_base64);
-
-        String yml = null;
-        try {
-            yml = templateService.convert("privateDocker/create_private_docker_secret.ftl", model);
-        } catch (ContainerPlatformException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        String responseBody = restTemplateService.send(propertyService.getContainerPlatformUrl() + "/api/v1/namespaces/" + nameSpace + "/secrets", yml, HttpMethod.POST, String.class);
-
-        if (null != responseBody)
-            logger.debug("Change ResourceQuota response body : {}", CommonUtils.loggerReplace(responseBody));
-
-        return responseBody;
-    }
-
-
-
-    /**
+/*
+    */
+/**
      * 1. namespace 생성
      * 2. namespace에 quota 할당
      * 3. namespace의 role 생성
@@ -392,7 +325,8 @@ public class ContainerPlatformService {
      *
      * @author Hyerin
      * @since 2018.07.30
-     */
+     *//*
+
     public String createCpNamespace(JpaServiceInstance instance, Plan plan) {
         logger.info("### *** CREATE NAMESPACE...");
 
@@ -415,56 +349,7 @@ public class ContainerPlatformService {
         }
         return Constants.RESULT_STATUS_SUCCESS;
     }
-
-
-    /**
-     * ftl 파일로 init role을 생성한다.
-     *
-     * @param namespace the namespace
-     */
-    public void createCpInitRole(String namespace) {
-        logger.info("### ** Create container platform init role in namespace [{}]..", CommonUtils.loggerReplace(namespace));
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("spaceName", namespace);
-        map.put("roleName", propertyService.getInitRole());
-
-        String yml = null;
-        try {
-            yml = templateService.convert("instance/create_init_role.ftl", map);
-        } catch (ContainerPlatformException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        restTemplateService.send(propertyService.getContainerPlatformUrl() + "/apis/rbac.authorization.k8s.io/v1/namespaces/" + namespace + "/roles", yml, HttpMethod.POST, String.class);
-    }
-
-
-    /**
-     * ftl 파일로 admin role을 생성한다.
-     *
-     * @param namespace the namespace
-     */
-    public void createCpAdminRole(String namespace) {
-        logger.info("### ** Create container platform admin role in namespace [{}]..", CommonUtils.loggerReplace(namespace));
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("spaceName", namespace);
-        map.put("roleName", propertyService.getAdminRole());
-
-        String yml = null;
-        try {
-            yml = templateService.convert("instance/create_admin_role.ftl", map);
-        } catch (ContainerPlatformException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        restTemplateService.send(propertyService.getContainerPlatformUrl() + "/apis/rbac.authorization.k8s.io/v1/namespaces/" + namespace + "/roles", yml, HttpMethod.POST, String.class);
-    }
-
-
+*/
 
 
 }
