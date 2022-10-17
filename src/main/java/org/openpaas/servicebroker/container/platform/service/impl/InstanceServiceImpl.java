@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openpaas.servicebroker.container.platform.common.CommonStatusCode;
 import org.openpaas.servicebroker.container.platform.common.CommonUtils;
-import org.openpaas.servicebroker.container.platform.model.Constants;
 import org.openpaas.servicebroker.container.platform.model.JpaServiceInstance;
 import org.openpaas.servicebroker.container.platform.model.KeycloakUserStatus;
 import org.openpaas.servicebroker.container.platform.repo.JpaServiceInstanceRepository;
@@ -225,13 +224,13 @@ public class InstanceServiceImpl implements ServiceInstanceService {
             // 'SUPER-ADMIN' 권한의 사용자가 없는 경우, Keycloak 계정 생성
             //  - uaa <-> keycloak Identity Providers 설정
             //  - cp admin group join
-            logger.info("[1] Create cp admin user in Keycloak because there is currently no admin in the cp portal...");
+            logger.info("[*] Create cp portal admin account in Keycloak because there is currently no admin in the cp portal...");
             keycloakUserStatus = keycloakAdminClientService.createAdminUserInKeycloak(instance.getUserId());
         }
 
         try {
             // 4. Broker DB 에 Instance 정보 생성
-            logger.info("[2] Save Instance data in Broker DB...");
+            logger.info("[*] Save Instance data in Broker DB...");
             setInstanceByCpPortal(instance);
             instanceRepository.save(instance);
 
@@ -254,17 +253,13 @@ public class InstanceServiceImpl implements ServiceInstanceService {
 
 
     /**
-     * 관리자 포탈 서비스 인스턴스 데이터 설정
+     * 포탈 서비스 인스턴스 데이터 설정
      *
      * @param instance JpaServiceInstance
      * @return
      */
     private void setInstanceByCpPortal(JpaServiceInstance instance) {
         instance.withDashboardUrl(propertyService.getDashboardUrl());
-        instance.setDashboardType(Constants.NULL_REPLACE_TEXT);
-        instance.setCaasAccountTokenName(Constants.NULL_REPLACE_TEXT);
-        instance.setCaasAccountName(Constants.NULL_REPLACE_TEXT);
-        instance.setCaasNamespace(Constants.NULL_REPLACE_TEXT);
     }
 
 }
