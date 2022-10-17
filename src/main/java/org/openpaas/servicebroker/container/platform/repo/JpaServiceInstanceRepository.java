@@ -4,8 +4,6 @@ import org.openpaas.servicebroker.container.platform.model.JpaServiceInstance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 
 /**
  * Service Instance JPA Repository 클래스
@@ -19,10 +17,4 @@ public interface JpaServiceInstanceRepository extends JpaRepository<JpaServiceIn
     JpaServiceInstance findByServiceInstanceId(String serviceInstanceId);
     
     boolean existsByOrganizationGuid(String organizationGuid);
-
-    boolean existsByCaasNamespace(String caasNamespace);
-
-    boolean existsByDashboardType(String dashboardType);
-
-    List<JpaServiceInstance> findAllByOrganizationGuidAndDashboardType(String organizationGuid, String dashboardType);
 }

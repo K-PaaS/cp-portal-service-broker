@@ -36,8 +36,7 @@ import org.springframework.web.client.RestTemplate;
  * 크게 4가지의 통신으로 나뉜다.
  * 1. token Validation을 위한 메소드
  * 2. kuber api와 통신하기 위한 메소드
- * 3. common DB에 저장하기 위해 common-api와통신하는 메소드
- * 4. api와 통신하는 메소드
+ * 3. CP DB에 조회하기 위해 common-api와 통신하는 메소드
  * @author Hyerin
  * @since 2018.08.22
  * @version 20180822

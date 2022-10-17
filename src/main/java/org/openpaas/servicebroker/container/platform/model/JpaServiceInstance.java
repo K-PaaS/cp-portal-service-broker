@@ -42,21 +42,6 @@ public class JpaServiceInstance extends ServiceInstance {
     private String spaceGuid;
 
     @JsonSerialize
-    @JsonProperty("caas_namespace")
-    @Column(name = "caas_namespace")
-    private String caasNamespace;
-
-    @JsonSerialize
-    @JsonProperty("caas_account_name")
-    @Column(name = "caas_account_name")
-    private String caasAccountName;
-
-    @JsonSerialize
-    @JsonProperty("caas_account_token_name")
-    @Column(name = "caas_account_token_name")
-    private String caasAccountTokenName;
-
-    @JsonSerialize
     @JsonProperty("user_id")
     @Column(name = "user_id")
     private String userId;
@@ -64,13 +49,6 @@ public class JpaServiceInstance extends ServiceInstance {
     @JsonIgnore
     @Transient
     private Map<String, Object> parameters;
-
-
-    @JsonSerialize
-    @JsonProperty("dashboard_type")
-    @Column(name = "dashboard_type")
-    private String dashboardType;
-
 
     @JsonIgnore
     @Transient
@@ -80,6 +58,12 @@ public class JpaServiceInstance extends ServiceInstance {
     @Transient
     private String spaceName;
 
+    @Transient
+    private String caasNamespace;
+    @Transient
+    private String caasAccountName;
+    @Transient
+    private String caasAccountTokenName;
 
     public JpaServiceInstance() {
         super(); // empty datum,
@@ -214,30 +198,6 @@ public class JpaServiceInstance extends ServiceInstance {
         super.withDashboardUrl(dashboardUrl);
     }
 
-    //// Under methods : Additional parameters on ServiceInstance ////
-    public String getCaasNamespace() {
-        return caasNamespace;
-    }
-
-    public void setCaasNamespace(String caasNamespace) {
-        this.caasNamespace = caasNamespace;
-    }
-
-    public String getCaasAccountName() {
-        return caasAccountName;
-    }
-
-    public void setCaasAccountName(String caasAccountName) {
-        this.caasAccountName = caasAccountName;
-    }
-
-    public String getCaasAccountTokenName() {
-        return caasAccountTokenName;
-    }
-
-    public void setCaasAccountTokenName(String caasAccountTokenName) {
-        this.caasAccountTokenName = caasAccountTokenName;
-    }
 
     public String getUserId() {
         return userId;
@@ -247,14 +207,6 @@ public class JpaServiceInstance extends ServiceInstance {
         this.userId = userId;
     }
 
-
-    public String getDashboardType() {
-        return dashboardType;
-    }
-
-    public void setDashboardType(String dashboardType) {
-        this.dashboardType = dashboardType;
-    }
 
     @Transient
     public Map<String, Object> getParameters() {
@@ -323,5 +275,30 @@ public class JpaServiceInstance extends ServiceInstance {
         }
 
         return false;
+    }
+
+    @Transient
+    public String getCaasNamespace() {
+        return caasNamespace;
+    }
+    @Transient
+    public void setCaasNamespace(String caasNamespace) {
+        this.caasNamespace = caasNamespace;
+    }
+    @Transient
+    public String getCaasAccountName() {
+        return caasAccountName;
+    }
+    @Transient
+    public void setCaasAccountName(String caasAccountName) {
+        this.caasAccountName = caasAccountName;
+    }
+    @Transient
+    public String getCaasAccountTokenName() {
+        return caasAccountTokenName;
+    }
+    @Transient
+    public void setCaasAccountTokenName(String caasAccountTokenName) {
+        this.caasAccountTokenName = caasAccountTokenName;
     }
 }
