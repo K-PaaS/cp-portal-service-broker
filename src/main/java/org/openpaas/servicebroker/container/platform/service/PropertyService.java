@@ -1,6 +1,5 @@
 package org.openpaas.servicebroker.container.platform.service;
 
-import org.openpaas.servicebroker.container.platform.model.Constants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +57,7 @@ public class PropertyService {
         return commonPassword;
     }
 
-    public String getDashboardUrl() { return dashboardUrl + Constants.DASHBOARD_URI_PARAMS; }
+    public String getDashboardUrl() { return dashboardUrl; }
 
     public void setDashboardUrl(String dashboardUrl) {
         this.dashboardUrl = dashboardUrl;
