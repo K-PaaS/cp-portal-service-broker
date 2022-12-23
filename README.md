@@ -35,14 +35,13 @@ Container Platform 포털 서비스 브로커의 개발 환경은 다음과 같�
 | Situation                      | Version |
 | ------------------------------ | ------- |
 | JDK                            | 8       |
-| Gradle                         | 6.5     |
-| Spring Boot                    | 2.3.3   |
-| Spring Boot Cf Service Broker  | 2.4.0   |
+| Gradle                         | 6.9.2   |
+| Spring Boot                    | 2.7.3   |
 | JSch                           | 0.1.54  |
-| Hibernate Validator            | 5.1.0   |
+| Hibernate Core                 | 5.6.10   |
 | Json Path                      | 2.2.0   |
 | Jacoco                         | 0.8.1   |
-| MariaDB Java Client            | 2.2.6   |
+| MariaDB Java Client            | 2.7.5   |
 
 
 ## 가능한 명령 목록 (로컬 환경)
