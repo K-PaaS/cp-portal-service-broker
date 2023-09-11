@@ -10,7 +10,7 @@ import org.openpaas.servicebroker.model.Catalog;
 import org.openpaas.servicebroker.model.ServiceDefinition;
 import org.openpaas.servicebroker.model.fixture.ServiceFixture;
 import org.openpaas.servicebroker.service.CatalogService;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 
 /**
  * Created by user on 2017-09-20.

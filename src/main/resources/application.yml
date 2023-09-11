@@ -28,7 +28,7 @@ cp:
   common-api:
     url: ${CP_PORTAL_COMMON_API_DNS}
     id: admin
-    password: PaaS-TA
+    password: K-PaaS
 
 keycloak:
   admin:

@@ -1,12 +1,9 @@
 package org.openpaas.servicebroker.model.fixture;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.openpaas.servicebroker.model.ServiceDefinition;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
 
 
 public class ServiceFixture {

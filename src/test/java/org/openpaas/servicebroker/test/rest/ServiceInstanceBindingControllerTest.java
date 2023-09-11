@@ -15,7 +15,7 @@ import org.openpaas.servicebroker.model.fixture.RequestFixture;
 import org.openpaas.servicebroker.model.fixture.ServiceInstanceFixture;
 import org.openpaas.servicebroker.service.ServiceInstanceBindingService;
 import org.openpaas.servicebroker.service.ServiceInstanceService;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
@@ -36,8 +36,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * paastaSourceControlServiceBroker
- * org.paasta.servicebroker.sourcecontrol.service.impl
+ * SourceControlServiceBroker
+ * org.servicebroker.sourcecontrol.service.impl
  *
  * 형상관리 - binding 지원 안함.
  *

@@ -37,7 +37,7 @@ spec:
             - name: COMMON_API_ID
               value: admin
             - name: COMMON_API_PASSWORD
-              value: PaaS-TA
+              value: K-PaaS
             - name: LOGGGING_LEVEL
               value: INFO
             - name: REGISTRY_PORT
@@ -47,7 +47,7 @@ spec:
             - name: NODE_IP
               value: NODE_IP    # Worker Node IP
       imagePullSecrets:
-        - name: paasta-cp-dev-secret
+        - name: cp-dev-secret
 ---
 apiVersion: v1
 kind: Service

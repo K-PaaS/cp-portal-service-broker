@@ -1,18 +1,8 @@
 package org.openpaas.servicebroker.model.fixture;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openpaas.servicebroker.model.CreateServiceInstanceRequest;
-import org.openpaas.servicebroker.model.CreateServiceInstanceResponse;
-import org.openpaas.servicebroker.model.ServiceDefinition;
 import org.openpaas.servicebroker.model.ServiceInstance;
-import org.openpaas.servicebroker.model.UpdateServiceInstanceRequest;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
-
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import org.servicebroker.apiplatform.common.TestConstants;
 
 public class ServiceInstanceFixture {
 

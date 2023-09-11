@@ -1,6 +1,6 @@
 # container-platform-portal-service-broker
 
-PaaS-TA에서 제공하는 Container Platform 포털 서비스 브로커로 클라우드 컨트롤러와 서비스 브로커간의 v2 서비스 API 를 제공합니다.
+K-PaaS에서 제공하는 Container Platform 포털 서비스 브로커로 클라우드 컨트롤러와 서비스 브로커간의 v2 서비스 API 를 제공합니다.
 
 - [시작하기](#시작하기)
   - [Container Platform 포털 서비스 브로커 설치 방법](#Container-Platform-포털-서비스-브로커-설치-방법)
@@ -19,7 +19,7 @@ Container Platform 포털 서비스 브로커가 수행하는 서비스 관리 �
 
 ### Container Platform 포털 서비스 브로커 설치 방법
 
-[서비스팩 설치 가이드](https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/service-guide/tools/PAAS-TA_CONTAINER_SERVICE_INSTALL_GUIDE_V2.0.md)의 가이드를 참고하시면 아키텍쳐와 설치 및 사용법에 대해 자세히 알 수 있습니다.
+[서비스팩 설치 가이드](https://github.com/K-PaaS/container-platform/blob/master/install-guide/container-platform-portal/cp-portal-deployment-service-guide.md)의 가이드를 참고하시면 아키텍쳐와 설치 및 사용법에 대해 자세히 알 수 있습니다.
 
 ### Container Platform 포털 서비스 브로커 빌드 방법
 
