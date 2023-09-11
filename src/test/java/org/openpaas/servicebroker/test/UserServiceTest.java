@@ -14,7 +14,7 @@ import org.openpaas.servicebroker.container.platform.service.PropertyService;
 import org.openpaas.servicebroker.container.platform.service.RestTemplateService;
 import org.openpaas.servicebroker.container.platform.service.impl.UserService;
 import org.openpaas.servicebroker.model.Plan;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 
 
 @RunWith(MockitoJUnitRunner.class)

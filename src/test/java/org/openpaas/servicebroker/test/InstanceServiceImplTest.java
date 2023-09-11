@@ -34,11 +34,9 @@ import org.openpaas.servicebroker.model.UpdateServiceInstanceRequest;
 import org.openpaas.servicebroker.model.fixture.PlanFixture;
 import org.openpaas.servicebroker.model.fixture.RequestFixture;
 import org.openpaas.servicebroker.model.fixture.ServiceFixture;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.client.HttpStatusCodeException;
 
 
 @RunWith(MockitoJUnitRunner.class)

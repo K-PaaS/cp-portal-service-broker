@@ -29,7 +29,7 @@ import org.openpaas.servicebroker.model.fixture.ServiceFixture;
 import org.openpaas.servicebroker.model.fixture.ServiceInstanceFixture;
 import org.openpaas.servicebroker.service.CatalogService;
 import org.openpaas.servicebroker.service.ServiceInstanceService;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;

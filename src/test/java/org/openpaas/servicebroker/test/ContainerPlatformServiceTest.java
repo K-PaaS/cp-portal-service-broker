@@ -23,7 +23,7 @@ import org.openpaas.servicebroker.container.platform.service.impl.ContainerPlatf
 import org.openpaas.servicebroker.model.CreateServiceInstanceRequest;
 import org.openpaas.servicebroker.model.fixture.PlanFixture;
 import org.openpaas.servicebroker.model.fixture.RequestFixture;
-import org.paasta.servicebroker.apiplatform.common.TestConstants;
+import org.servicebroker.apiplatform.common.TestConstants;
 import org.springframework.http.HttpMethod;
 
 @RunWith(MockitoJUnitRunner.class)
