@@ -1,0 +1,15 @@
+# ignore output and build directories
+build/**
+bin/**
+out/**
+
+# generated gradle directories and files
+.gradle
+.settings
+
+# idea settings
+*.iml
+*.ipr
+*.iws
+*.idea
+.idea/*
