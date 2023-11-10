@@ -26,9 +26,9 @@ cp:
   portal:
     url: ${CP_PORTAL_UI_URI}
   common-api:
-    url: ${CP_PORTAL_COMMON_API_DNS}
+    url: ${CP_PORTAL_COMMON_API_URI}
     id: admin
-    password: K-PaaS
+    password: cpcommon!123
 
 keycloak:
   admin:

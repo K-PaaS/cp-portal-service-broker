@@ -90,6 +90,7 @@ public class KeycloakAdminClientService {
             userRepresentation = users.get(0);
         } catch (Exception e) {
             logger.info("### EXCEPTION OCCURRED DURING GET KEYCLOAK USER INFO...");
+            logger.info("### EXCEPTION MESSAGE : {}",CommonUtils.loggerReplace(e.getMessage()));
         }
 
         return userRepresentation;
@@ -114,6 +115,7 @@ public class KeycloakAdminClientService {
         } catch (Exception e) {
             // keycloak.realm(cpRealm).users().get(ur.getId()).leaveGroup(gr.getId());
             logger.info("### EXCEPTION OCCURRED DURING JOIN THE CLUSTER ADMIN GROUP TO USER");
+            logger.info("### EXCEPTION MESSAGE : {}",CommonUtils.loggerReplace(e.getMessage()));
             throw new ServiceBrokerException(Constants.USER_SSO_ACCOUNT_CREATE_FAILED_MESSAGE);
         }
 
@@ -137,6 +139,7 @@ public class KeycloakAdminClientService {
                     CommonUtils.loggerReplace(response.getStatusInfo().getReasonPhrase()));
         } catch (Exception e) {
             logger.info("### EXCEPTION OCCURRED DURING CREATE KEYCLOAK USER...THROW SERVICE_BROKER_EXCEPTION...");
+            logger.info("### EXCEPTION MESSAGE : {}",CommonUtils.loggerReplace(e.getMessage()));
             throw new ServiceBrokerException(Constants.USER_SSO_ACCOUNT_CREATE_FAILED_MESSAGE);
         }
 
@@ -189,6 +192,7 @@ public class KeycloakAdminClientService {
                     CommonUtils.loggerReplace(response.getStatusInfo().getReasonPhrase()));
         } catch (Exception e) {
             logger.info("### EXCEPTION OCCURRED DURING DELETE KEYCLOAK USER ...");
+            logger.info("### EXCEPTION MESSAGE : {}",CommonUtils.loggerReplace(e.getMessage()));
         }
     }
 }
